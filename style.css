@@ -948,3 +948,54 @@ body.light .make-user-btn {
     width: 90%;
   }
 }
+
+@media (max-width: 768px) {
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 8px 10px;
+    min-height: auto;
+    border-radius: 0;
+  }
+
+  .header-inner {
+    gap: 6px;
+  }
+
+  .header-inner h1 {
+    font-size: 20px;
+  }
+
+  .header-buttons button,
+  .register-btn {
+    width: 38px;
+    height: 38px;
+    padding: 4px;
+    font-size: 16px;
+  }
+
+  nav {
+    top: 105px;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0;
+    padding: 4px 6px;
+    margin-top: 0;
+    flex-wrap: wrap;
+  }
+
+  nav a {
+    font-size: 14px;
+    padding: 6px 9px;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .container {
+    margin-top: 125px;
+  }
+}
