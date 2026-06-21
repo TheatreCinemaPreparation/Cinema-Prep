@@ -1,3 +1,8 @@
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 160px;
+}
+
 /* RESET */
 
 * {
@@ -187,7 +192,6 @@ nav a:hover {
 
 section {
   margin-bottom: 60px;
-  scroll-margin-top: 150px;
 }
 
 h2 {
@@ -282,10 +286,6 @@ body.light .article-page {
 
 .back-btn:hover {
   color: #fff;
-}
-
-body.light .back-btn:hover {
-  color: #222;
 }
 
 /* SCROLL REVEAL ANIMATIONS */
@@ -425,6 +425,7 @@ body.light .material-btn:hover {
 }
 
 /* MODAL */
+
 .modal {
   display: none;
   position: fixed;
@@ -812,7 +813,6 @@ body.light #forgotCancelBtn:hover {
 }
 
 /* LIGHT THEME FOR DYNAMIC PROFILE / ADMIN MODALS */
-
 body.light .profile-modal {
   background: rgba(255,255,255,0.65);
 }
@@ -879,18 +879,31 @@ body.light .make-user-btn {
   color: #fff;
 }
 
-/* PREP CARDS AS LINKS */
-.cards a.card {
-  text-decoration: none;
-  display: block;
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: 300px;
+  }
 }
 
-/* FIX MENU ANCHOR OFFSET */
-
-section {
-  scroll-margin-top: 180px;
+.about-content {
+  max-width: 900px;
 }
 
-#about {
-  scroll-margin-top: 180px;
+.about-content h3 {
+  margin-top: 25px;
+  margin-bottom: 10px;
+  color: var(--accent);
+}
+
+.about-content ul {
+  padding-left: 25px;
+  line-height: 1.8;
+}
+
+.about-content li {
+  margin-bottom: 8px;
+}
+
+.about-content p {
+  line-height: 1.8;
 }
