@@ -999,3 +999,6 @@ body.light .make-user-btn {
     margin-top: 125px;
   }
 }
+body {
+  margin: 0;
+}
