@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8">
+  <title data-lang-hy="Ինչ է ռեժիսուրան" data-lang-en="What is Directing?" data-lang-ru="Что такое режиссура">Ինչ է ռեժիսուրան</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body data-lang="hy">
+
+<header>
+  <div class="header-inner">
+    <h1 data-lang-hy="🎬 Cinema Prep" data-lang-en="🎬 Cinema Prep" data-lang-ru="🎬 Cinema Prep">🎬 Cinema Prep</h1>
+
+    <div class="header-buttons">
+      <button id="langBtn" title="Լեզուներ">🌐</button>
+      <button id="themeBtn" title="Թեմա">🌙</button>
+    </div>
+
+    <a href="../index%20(1).html#materials" class="back-btn"
+       data-lang-hy="← Վերադառնալ նյութերի ցուցակից"
+       data-lang-en="← Back to materials"
+       data-lang-ru="← Вернуться к материалам">← Վերադառնալ նյութերի ցուցակից</a>
+  </div>
+</header>
+
+<br><br><br>
+<main class="container article-page">
+  <h2 data-lang-hy="Ինչ է ռեժիսուրան" data-lang-en="What is Directing?" data-lang-ru="Что такое режиссура">Ինչ է ռեժիսուրան</h2>
+
+  <p data-lang-hy="Ռեժիսուրան արվեստ է, որտեղ ստեղծվում է պատմություն պատկերների միջոցով: Ռեժիսորը ղեկավարում է ամբողջ ստեղծագործական գործընթացը:"
+     data-lang-en="Directing is an art in which a story is created through images. The director leads the entire creative process."
+     data-lang-ru="Режиссура — это искусство, в котором история создаётся с помощью образов. Режиссёр руководит всем творческим процессом.">
+    Ռեժիսուրան արվեստ է, որտեղ ստեղծվում է պատմություն պատկերների միջոցով:
+    Ռեժիսորը ղեկավարում է ամբողջ ստեղծագործական գործընթացը:
+  </p>
+
+  <p data-lang-hy="Նա որոշում է կադրերը, դերասանների խաղը, ռիթմը և ամբողջ ֆիլմի մթնոլորտը:"
+     data-lang-en="The director determines the shots, the actors’ performance, the rhythm, and the overall atmosphere of the film."
+     data-lang-ru="Он определяет кадры, игру актёров, ритм и общую атмосферу фильма.">
+    Նա որոշում է կադրերը, դերասանների խաղը, ռիթմը և ամբողջ ֆիլմի մթնոլորտը:
+  </p>
+
+  <p data-lang-hy="Հիմնական նպատակը հանդիսատեսին փոխանցել հստակ պատմություն և զգացողություն:"
+     data-lang-en="The main goal is to convey a clear story and emotion to the audience."
+     data-lang-ru="Главная цель — передать зрителю ясную историю и чувство.">
+    Հիմնական նպատակը հանդիսատեսին փոխանցել հստակ պատմություն և զգացողություն:
+  </p>
+</main>
+
+<footer>
+  <p data-lang-hy="© 2026 CinemaPrep" data-lang-en="© 2026 CinemaPrep" data-lang-ru="© 2026 CinemaPrep">© 2026 CinemaPrep</p>
+</footer>
+
+<script>
+  const langBtn = document.getElementById("langBtn");
+  const themeBtn = document.getElementById("themeBtn");
+
+  let currentLang = localStorage.getItem("lang") || "hy";
+
+  function applyLanguage(lang) {
+    currentLang = lang;
+    localStorage.setItem("lang", lang);
+    document.documentElement.lang = lang;
+    document.body.dataset.lang = lang;
+
+    document.querySelectorAll(`[data-lang-${lang}]`).forEach(el => {
+      const value = el.getAttribute(`data-lang-${lang}`);
+      if (!value) return;
+
+      if (el.tagName === "TITLE") {
+        document.title = value;
+      } else {
+        el.textContent = value;
+      }
+    });
+  }
+
+  function applyTheme() {
+    if (localStorage.getItem("theme") === "light") {
+      document.body.classList.add("light");
+      themeBtn.textContent = "☀️";
+    } else {
+      document.body.classList.remove("light");
+      themeBtn.textContent = "🌙";
+    }
+  }
+
+  langBtn.addEventListener("click", () => {
+    if (currentLang === "hy") applyLanguage("ru");
+    else if (currentLang === "ru") applyLanguage("en");
+    else applyLanguage("hy");
+  });
+
+  themeBtn.addEventListener("click", () => {
+    if (document.body.classList.contains("light")) {
+      localStorage.setItem("theme", "dark");
+    } else {
+      localStorage.setItem("theme", "light");
+    }
+    applyTheme();
+  });
+
+  window.addEventListener("load", () => {
+    applyLanguage(currentLang);
+    applyTheme();
+  });
+</script>
+
+</body>
+</html>

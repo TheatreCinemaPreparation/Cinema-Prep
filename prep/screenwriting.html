@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8">
+  <title data-lang-hy="Սցենար" data-lang-en="Screenwriting" data-lang-ru="Сценарий">Սցենար</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body data-lang="hy">
+
+<header>
+  <div class="header-inner">
+    <a href="../index.html#prep" class="back-btn"
+       data-lang-hy="← Վերադառնալ պատրաստման բաժին"
+       data-lang-en="← Back to preparation"
+       data-lang-ru="← Вернуться к подготовке">← Վերադառնալ պատրաստման բաժին</a>
+
+    <h1 data-lang-hy="🎬 Cinema Prep" data-lang-en="🎬 Cinema Prep" data-lang-ru="🎬 Cinema Prep">🎬 Cinema Prep</h1>
+
+    <div class="header-buttons">
+      <button id="langBtn" title="Լեզուներ">🌐</button>
+      <button id="themeBtn" title="Թեմա">🌙</button>
+    </div>
+  </div>
+</header>
+
+<br><br><br>
+
+<main class="container article-page">
+  <h2 data-lang-hy="Սցենար" data-lang-en="Screenwriting" data-lang-ru="Сценарий">Սցենար</h2>
+
+  <p data-lang-hy="Սցենարը ֆիլմի գրավոր հիմքն է։ Դրա մեջ նկարագրվում են պատմությունը, գործողությունները, կերպարները, երկխոսությունները և տեսարանների հաջորդականությունը։"
+     data-lang-en="A screenplay is the written foundation of a film. It describes the story, actions, characters, dialogue, and sequence of scenes."
+     data-lang-ru="Сценарий — это письменная основа фильма. В нём описываются история, действия, персонажи, диалоги и последовательность сцен.">
+    Սցենարը ֆիլմի գրավոր հիմքն է։ Դրա մեջ նկարագրվում են պատմությունը, գործողությունները, կերպարները, երկխոսությունները և տեսարանների հաջորդականությունը։
+  </p>
+
+  <p data-lang-hy="Լավ սցենարը ունի հստակ կառուցվածք՝ սկիզբ, զարգացում և ավարտ։ Ամեն տեսարան պետք է ծառայի պատմությանը կամ բացահայտի կերպարին։"
+     data-lang-en="A good screenplay has a clear structure: beginning, development, and ending. Every scene should serve the story or reveal a character."
+     data-lang-ru="Хороший сценарий имеет чёткую структуру: начало, развитие и финал. Каждая сцена должна служить истории или раскрывать персонажа.">
+    Լավ սցենարը ունի հստակ կառուցվածք՝ սկիզբ, զարգացում և ավարտ։ Ամեն տեսարան պետք է ծառայի պատմությանը կամ բացահայտի կերպարին։
+  </p>
+
+  <p data-lang-hy="Սցենար գրելիս կարևոր է ոչ միայն ինչ է կատարվում, այլ նաև ինչու է դա կատարվում։ Կերպարի նպատակը, կոնֆլիկտը և ընտրությունը պատմությունը դարձնում են կենդանի։"
+     data-lang-en="When writing a screenplay, it is important not only what happens, but why it happens. A character’s goal, conflict, and choice make the story alive."
+     data-lang-ru="При написании сценария важно не только то, что происходит, но и почему это происходит. Цель персонажа, конфликт и выбор делают историю живой.">
+    Սցենար գրելիս կարևոր է ոչ միայն ինչ է կատարվում, այլ նաև ինչու է դա կատարվում։ Կերպարի նպատակը, կոնֆլիկտը և ընտրությունը պատմությունը դարձնում են կենդանի։
+  </p>
+</main>
+
+<footer>
+  <p data-lang-hy="© 2026 CinemaPrep" data-lang-en="© 2026 CinemaPrep" data-lang-ru="© 2026 CinemaPrep">© 2026 CinemaPrep</p>
+</footer>
+
+<script>
+const langBtn = document.getElementById("langBtn");
+const themeBtn = document.getElementById("themeBtn");
+let currentLang = localStorage.getItem("lang") || "hy";
+function applyLanguage(lang) {
+  currentLang = lang;
+  localStorage.setItem("lang", lang);
+  document.documentElement.lang = lang;
+  document.body.dataset.lang = lang;
+  document.querySelectorAll(`[data-lang-${lang}]`).forEach(el => {
+    const value = el.getAttribute(`data-lang-${lang}`);
+    if (!value) return;
+    if (el.tagName === "TITLE") document.title = value;
+    else el.textContent = value;
+  });
+}
+function applyTheme() {
+  if (localStorage.getItem("theme") === "light") {
+    document.body.classList.add("light");
+    themeBtn.textContent = "☀️";
+  } else {
+    document.body.classList.remove("light");
+    themeBtn.textContent = "🌙";
+  }
+}
+langBtn.addEventListener("click", () => {
+  if (currentLang === "hy") applyLanguage("ru");
+  else if (currentLang === "ru") applyLanguage("en");
+  else applyLanguage("hy");
+});
+themeBtn.addEventListener("click", () => {
+  localStorage.setItem("theme", document.body.classList.contains("light") ? "dark" : "light");
+  applyTheme();
+});
+window.addEventListener("load", () => { applyLanguage(currentLang); applyTheme(); });
+</script>
+
+</body>
+</html>

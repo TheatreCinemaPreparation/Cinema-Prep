@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8">
+  <title data-lang-hy="Ռեժիսուրա" data-lang-en="Directing" data-lang-ru="Режиссура">Ռեժիսուրա</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body data-lang="hy">
+
+<header>
+  <div class="header-inner">
+    <a href="../index.html#prep" class="back-btn"
+       data-lang-hy="← Վերադառնալ պատրաստման բաժին"
+       data-lang-en="← Back to preparation"
+       data-lang-ru="← Вернуться к подготовке">← Վերադառնալ պատրաստման բաժին</a>
+
+    <h1 data-lang-hy="🎬 Cinema Prep" data-lang-en="🎬 Cinema Prep" data-lang-ru="🎬 Cinema Prep">🎬 Cinema Prep</h1>
+
+    <div class="header-buttons">
+      <button id="langBtn" title="Լեզուներ">🌐</button>
+      <button id="themeBtn" title="Թեմա">🌙</button>
+    </div>
+  </div>
+</header>
+
+<br><br><br>
+
+<main class="container article-page">
+  <h2 data-lang-hy="Ռեժիսուրա" data-lang-en="Directing" data-lang-ru="Режиссура">Ռեժիսուրա</h2>
+
+  <p data-lang-hy="Ռեժիսուրան ֆիլմի ստեղծագործական ղեկավարումն է։ Ռեժիսորը որոշում է՝ ինչպես պատմությունը վերածել պատկերների, ձայնի, դերասանական խաղի և ռիթմի։"
+     data-lang-en="Directing is the creative leadership of a film. The director decides how a story becomes images, sound, acting, and rhythm."
+     data-lang-ru="Режиссура — это творческое руководство фильмом. Режиссёр решает, как история превращается в изображение, звук, актёрскую игру и ритм.">
+    Ռեժիսուրան ֆիլմի ստեղծագործական ղեկավարումն է։ Ռեժիսորը որոշում է՝ ինչպես պատմությունը վերածել պատկերների, ձայնի, դերասանական խաղի և ռիթմի։
+  </p>
+
+  <p data-lang-hy="Ռեժիսորը աշխատում է սցենարի, դերասանների, օպերատորի, նկարչի, մոնտաժողի և ամբողջ թիմի հետ։ Նրա խնդիրն է բոլոր մասնակիցների աշխատանքը միավորել մեկ ամբողջական գաղափարի մեջ։"
+     data-lang-en="The director works with the script, actors, cinematographer, production designer, editor, and the whole team. Their task is to unite everyone’s work into one clear idea."
+     data-lang-ru="Режиссёр работает со сценарием, актёрами, оператором, художником, монтажёром и всей командой. Его задача — объединить работу всех участников в одну цельную идею.">
+    Ռեժիսորը աշխատում է սցենարի, դերասանների, օպերատորի, նկարչի, մոնտաժողի և ամբողջ թիմի հետ։ Նրա խնդիրն է բոլոր մասնակիցների աշխատանքը միավորել մեկ ամբողջական գաղափարի մեջ։
+  </p>
+
+  <p data-lang-hy="Լավ ռեժիսորը միայն հրահանգներ չի տալիս․ նա հասկանում է տեսարանի իմաստը, կերպարի վիճակը և այն զգացումը, որը պետք է հասնի հանդիսատեսին։"
+     data-lang-en="A good director does not only give instructions; they understand the meaning of the scene, the character’s state, and the emotion that must reach the audience."
+     data-lang-ru="Хороший режиссёр не просто даёт указания; он понимает смысл сцены, состояние персонажа и чувство, которое должно дойти до зрителя.">
+    Լավ ռեժիսորը միայն հրահանգներ չի տալիս․ նա հասկանում է տեսարանի իմաստը, կերպարի վիճակը և այն զգացումը, որը պետք է հասնի հանդիսատեսին։
+  </p>
+</main>
+
+<footer>
+  <p data-lang-hy="© 2026 CinemaPrep" data-lang-en="© 2026 CinemaPrep" data-lang-ru="© 2026 CinemaPrep">© 2026 CinemaPrep</p>
+</footer>
+
+<script>
+const langBtn = document.getElementById("langBtn");
+const themeBtn = document.getElementById("themeBtn");
+let currentLang = localStorage.getItem("lang") || "hy";
+function applyLanguage(lang) {
+  currentLang = lang;
+  localStorage.setItem("lang", lang);
+  document.documentElement.lang = lang;
+  document.body.dataset.lang = lang;
+  document.querySelectorAll(`[data-lang-${lang}]`).forEach(el => {
+    const value = el.getAttribute(`data-lang-${lang}`);
+    if (!value) return;
+    if (el.tagName === "TITLE") document.title = value;
+    else el.textContent = value;
+  });
+}
+function applyTheme() {
+  if (localStorage.getItem("theme") === "light") {
+    document.body.classList.add("light");
+    themeBtn.textContent = "☀️";
+  } else {
+    document.body.classList.remove("light");
+    themeBtn.textContent = "🌙";
+  }
+}
+langBtn.addEventListener("click", () => {
+  if (currentLang === "hy") applyLanguage("ru");
+  else if (currentLang === "ru") applyLanguage("en");
+  else applyLanguage("hy");
+});
+themeBtn.addEventListener("click", () => {
+  localStorage.setItem("theme", document.body.classList.contains("light") ? "dark" : "light");
+  applyTheme();
+});
+window.addEventListener("load", () => { applyLanguage(currentLang); applyTheme(); });
+</script>
+
+</body>
+</html>

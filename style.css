@@ -1,0 +1,885 @@
+/* RESET */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* THEME VARIABLES */
+
+:root {
+  --bg: #111;
+  --text: #fff;
+  --card: #1a1a1a;
+  --nav: #222;
+  --accent: #ff3c3c;
+}
+
+body.light {
+  --bg: #f2f2f2;
+  --text: #222;
+  --card: #ffffff;
+  --nav: #e0e0e0;
+}
+
+/* BODY */
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.4s, color 0.4s;
+  line-height: 1.6;
+}
+
+/* HEADER */
+
+header {
+  background: var(--bg);
+  color: var(--text);
+  padding: 15px 20px;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+}
+
+.header-inner {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.header-inner h1 {
+  margin: 0 auto;
+}
+
+.header-buttons {
+  position: absolute;
+  right: 0;
+  display: flex;
+  gap: 10px;
+}
+
+.back-btn {
+  position: absolute;
+  left: 0;
+}
+
+.header-inner h1 {
+  font-size: 22px;
+}
+
+/* HEADER BUTTONS */
+
+.header-inner button {
+  background: transparent;
+  border: 1px solid currentColor;
+  color: currentColor;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  margin-left: 8px;
+  transition: 0.3s;
+}
+
+.header-inner button:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+body.light .header-inner button {
+  color: #222;
+  border-color: #222;
+}
+
+body.light .header-inner button:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+/* HERO SECTION */
+
+.hero {
+  height: 100vh;
+  background: url("https://images.unsplash.com/photo-1485846234645-a62644f84728") center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: background 0.4s;
+}
+
+.hero-content {
+  background: rgba(0,0,0,0.6);
+  padding: 30px;
+  border-radius: 10px;
+  transition: background 0.4s, color 0.4s;
+}
+
+body.light .hero-content {
+  background: rgba(255,255,255,0.8);
+  color: #222;
+}
+
+.hero h2 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+/* BUTTONS */
+
+.btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #ff0000;
+}
+
+/* NAVIGATION */
+
+nav {
+  background: var(--nav);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  top: 80px;
+  margin-top: 10px;
+  border-radius: 10px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5px 10px;
+}
+
+nav a {
+  padding: 12px 18px;
+  color: #fff;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+/* MAIN CONTAINER */
+
+.container {
+  background: var(--card);
+  max-width: 1100px;
+  margin: 50px auto;
+  padding: 25px;
+  border-radius: 10px;
+  transition: background 0.4s, color 0.4s;
+}
+
+/* SECTIONS */
+
+section {
+  margin-bottom: 60px;
+}
+
+h2 {
+  margin-bottom: 15px;
+  border-left: 4px solid var(--accent);
+  padding-left: 10px;
+}
+
+/* CARDS */
+
+.cards {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.card {
+  flex: 1;
+  min-width: 200px;
+  background: var(--card);
+  color: var(--text);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  transition: 0.3s, transform 0.3s;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  background: #2a2a2a;
+}
+
+/* MATERIAL BUTTONS GRID */
+
+.materials-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 15px;
+}
+
+.material-btn {
+  background: var(--card);
+  color: var(--text);
+  text-decoration: none;
+  padding: 15px 25px;
+  border-radius: 8px;
+  flex: 1 1 200px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.material-btn:hover {
+  background: var(--accent);
+  color: #111;
+}
+
+/* ARTICLE PAGE */
+
+.article-page {
+  max-width: 800px;
+  margin: 120px auto 40px auto;
+  padding: 0 20px;
+  line-height: 1.8;
+  color: var(--text);
+}
+
+body.light .article-page {
+  color: #222;
+}
+
+.article-page h2 {
+  font-size: 32px;
+  margin-bottom: 25px;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 8px;
+}
+
+.article-page p {
+  margin-bottom: 20px;
+}
+
+.back-btn {
+  display: inline-block;
+  margin-top: 10px;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.back-btn:hover {
+  color: #fff;
+}
+
+body.light .back-btn:hover {
+  color: #222;
+}
+
+/* SCROLL REVEAL ANIMATIONS */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(60px) scale(0.98);
+  transition: all 0.8s cubic-bezier(0.2, 0.65, 0.3, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.reveal-left {
+  transform: translateX(-80px);
+}
+
+.reveal-right {
+  transform: translateX(80px);
+}
+
+.reveal.active.reveal-left,
+.reveal.active.reveal-right {
+  transform: translateX(0);
+}
+
+.card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* FOOTER */
+
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #888;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+  .article-page {
+    margin-top: 100px;
+  }
+
+  .hero h2 {
+    font-size: 28px;
+  }
+
+  nav a {
+    padding: 10px 12px;
+  }
+
+  .cards {
+    flex-direction: column;
+  }
+
+  header {
+    min-height: 140px;
+  }
+
+  nav {
+    top: 140px;
+  }
+}
+
+/* LIGHT MODE NAV LINKS */
+
+body.light nav a {
+  color: #111; /* սպիտակ ֆոնին մուգ գույն */
+}
+
+body.light nav a:hover {
+  color: #ff3c3c; /* hover-ի գույնը թող նույնը */
+}
+
+/* Keep nav always on top */
+nav {
+  z-index: 999;         /* որպեսզի մնա ամեն ինչից վեր */
+  
+  background: var(--nav); /* պահպանել գույնը ըստ թեմայի */
+  backdrop-filter: blur(10px); /* թափանցիկ, մոդեռն էֆեկտ */
+  border-radius: 10px;
+  
+}
+
+ /* CURSOR POINTER FOR ALL CLICKABLE ITEMS */
+
+.card,
+.material-btn,
+.btn,
+.back-btn {
+  cursor: pointer; /* միշտ pointer */
+}
+
+/* LIGHT MODE HOVER EFFECT FOR PREP CARDS */
+
+body.light .card:hover {
+  background: #ff3c3c; /* կամ մնա իր hover գույնը, կարևորը text contrast */
+  color: #fff;          /* տեքստը սպիտակ */
+  transform: translateY(-5px);
+  transition: 0.3s;
+}
+
+/* LIGHT MODE HOVER EFFECT FOR MATERIAL BUTTONS */
+
+body.light .material-btn:hover {
+  background: #ff3c3c; /* եթե ուզում ես, պահի նույն hover-ը */
+  color: #fff;          /* տեքստը սպիտակ */
+  transition: 0.3s;
+}
+
+.register-btn {
+  margin-left: 10px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffcc00;
+  color: #000;
+  border-radius: 50%;
+  text-decoration: none;
+  font-size: 18px;
+  transition: 0.3s;
+    display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.register-btn:hover {
+  background: #ffd633;
+  transform: scale(1.1);
+}
+
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+}
+
+.modal-content {
+  background: var(--card);
+  color: var(--text);
+  margin: 10% auto;
+  padding: 20px;
+  width: 300px;
+  border-radius: 10px;
+  text-align: center;
+  position: relative;
+  border: 1px solid var(--accent);
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+#closeModal {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  cursor: pointer;
+  font-size: 22px;
+}
+
+#switchMode {
+  color: #ffcc00;
+  cursor: pointer;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid #444;
+  border-radius: 6px;
+  outline: none;
+}
+
+body.light .modal-content input {
+  border-color: #bbb;
+}
+
+#closeModal {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  cursor: pointer;
+  font-size: 22px;
+  color: var(--text);
+}
+
+/* PASSWORD SHOW/HIDE (eye button) */
+
+.password-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding-right: 42px;
+}
+
+.eye-toggle {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  padding: 4px;
+  opacity: 0.65;
+  color: var(--text);
+  transition: 0.2s;
+}
+
+.eye-toggle:hover {
+  opacity: 1;
+}
+
+/* FORGOT PASSWORD / CANCEL LINKS */
+
+#forgotPasswordBtn:hover,
+#forgotCancelBtn:hover {
+  color: #fff;
+}
+
+body.light #forgotCancelBtn:hover {
+  color: #222;
+}
+
+@media (max-width: 768px) {
+  .header-inner {
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 5px;
+  }
+
+  .header-inner h1 {
+    margin: 0;
+    font-size: 20px;
+  }
+
+  .header-buttons {
+    position: static;
+    display: flex;
+    gap: 10px;
+  }
+
+  .back-btn {
+    position: static;
+    font-size: 13px;
+    text-align: center;
+    margin-top: 5px;
+    line-height: 1.3;
+  }
+
+  header {
+    padding: 10px 15px;
+  }
+
+  .article-page {
+    margin-top: 170px;
+  }
+}
+
+/* DYNAMIC MODALS AND ADMIN PANEL */
+
+.register-btn.logged-in {
+  background: #ff3c3c;
+  color: #fff;
+}
+
+.profile-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.75);
+}
+
+.profile-modal-content {
+  background: #1a1a1a;
+  margin: 10% auto;
+  padding: 30px 25px;
+  width: 320px;
+  border-radius: 14px;
+  text-align: center;
+  position: relative;
+  border: 1px solid #333;
+  box-shadow: 0 0 30px rgba(255,60,60,0.2);
+}
+
+.profile-close,
+.admin-close {
+  position: absolute;
+  right: 14px;
+  top: 8px;
+  cursor: pointer;
+  font-size: 24px;
+  color: #888;
+}
+
+.profile-icon {
+  font-size: 52px;
+  margin-bottom: 8px;
+}
+
+.profile-title {
+  color: #fff;
+  font-size: 18px;
+  margin-bottom: 6px;
+  border-left: none;
+  padding-left: 0;
+}
+
+.profile-email {
+  color: #aaa;
+  font-size: 13px;
+  margin-bottom: 24px;
+  word-break: break-all;
+}
+
+.profile-action-btn {
+  width: 100%;
+  padding: 11px;
+  margin-bottom: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.profile-admin-btn {
+  background: #ffcc00;
+  color: #000;
+}
+
+.profile-logout-btn {
+  background: #ff3c3c;
+  color: #fff;
+}
+
+.profile-delete-btn {
+  background: transparent;
+  color: #ff6b6b;
+  border: 1px solid #ff3c3c;
+}
+
+.profile-2fa-row {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #333;
+  text-align: left;
+}
+
+.profile-2fa-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.profile-2fa-text {
+  color: #aaa;
+  font-size: 13px;
+}
+
+.profile-2fa-toggle {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #ff3c3c;
+}
+
+.otp-input {
+  text-align: center;
+  letter-spacing: 6px;
+  font-size: 20px;
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.admin-panel {
+  display: block;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.85);
+  overflow-y: auto;
+}
+
+.admin-panel-content {
+  background: #1a1a1a;
+  margin: 5% auto;
+  padding: 30px 25px;
+  width: 90%;
+  max-width: 700px;
+  border-radius: 14px;
+  position: relative;
+  border: 1px solid #444;
+}
+
+.admin-title {
+  color: #ffcc00;
+  margin-bottom: 20px;
+}
+
+.users-list {
+  color: #fff;
+}
+
+.admin-user-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  margin-bottom: 10px;
+  background: #222;
+  border-radius: 8px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.admin-user-email {
+  color: #fff;
+  font-size: 14px;
+}
+
+.admin-user-meta {
+  color: #888;
+  font-size: 12px;
+}
+
+.admin-user-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.admin-role-badge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+.role-admin {
+  background: #ffcc00;
+  color: #000;
+}
+
+.role-user {
+  background: #333;
+  color: #aaa;
+}
+
+.admin-small-btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.make-admin-btn {
+  background: #ffcc00;
+  color: #000;
+}
+
+.make-user-btn {
+  background: #555;
+  color: #fff;
+}
+
+.admin-delete-user-btn {
+  background: #ff3c3c;
+  color: #fff;
+}
+
+.forgot-password-text,
+.forgot-cancel-text {
+  display: none;
+  margin-top: 10px;
+}
+
+.forgot-password-link,
+.forgot-cancel-link {
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 13px;
+}
+
+.forgot-password-link {
+  color: #ffcc00;
+}
+
+.forgot-cancel-link {
+  color: #888;
+}
+
+/* LIGHT THEME FOR DYNAMIC PROFILE / ADMIN MODALS */
+
+body.light .profile-modal {
+  background: rgba(255,255,255,0.65);
+}
+
+body.light .profile-modal-content {
+  background: var(--card);
+  color: var(--text);
+  border-color: #ddd;
+  box-shadow: 0 0 30px rgba(0,0,0,0.12);
+}
+
+body.light .profile-title,
+body.light .profile-email,
+body.light .profile-2fa-text {
+  color: var(--text);
+}
+
+body.light .profile-email,
+body.light .profile-2fa-text,
+body.light .profile-close,
+body.light .admin-close,
+body.light .admin-user-meta {
+  color: #555;
+}
+
+body.light .profile-2fa-row {
+  border-top-color: #ddd;
+}
+
+body.light .profile-delete-btn {
+  background: transparent;
+  color: #ff3c3c;
+  border-color: #ff3c3c;
+}
+
+body.light .admin-panel {
+  background: rgba(255,255,255,0.75);
+}
+
+body.light .admin-panel-content {
+  background: var(--card);
+  color: var(--text);
+  border-color: #ddd;
+  box-shadow: 0 0 30px rgba(0,0,0,0.12);
+}
+
+body.light .users-list,
+body.light .admin-user-email {
+  color: var(--text);
+}
+
+body.light .admin-user-card {
+  background: #f2f2f2;
+  border: 1px solid #ddd;
+}
+
+body.light .role-user {
+  background: #e0e0e0;
+  color: #333;
+}
+
+body.light .make-user-btn {
+  background: #777;
+  color: #fff;
+}
+
+/* PREP CARDS AS LINKS */
+.cards a.card {
+  text-decoration: none;
+  display: block;
+}

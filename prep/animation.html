@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8">
+  <title data-lang-hy="Անիմացիոն ֆիլմ" data-lang-en="Animation Film" data-lang-ru="Анимационный фильм">Անիմացիոն ֆիլմ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body data-lang="hy">
+
+<header>
+  <div class="header-inner">
+    <a href="../index.html#prep" class="back-btn"
+       data-lang-hy="← Վերադառնալ պատրաստման բաժին"
+       data-lang-en="← Back to preparation"
+       data-lang-ru="← Вернуться к подготовке">← Վերադառնալ պատրաստման բաժին</a>
+
+    <h1 data-lang-hy="🎬 Cinema Prep" data-lang-en="🎬 Cinema Prep" data-lang-ru="🎬 Cinema Prep">🎬 Cinema Prep</h1>
+
+    <div class="header-buttons">
+      <button id="langBtn" title="Լեզուներ">🌐</button>
+      <button id="themeBtn" title="Թեմա">🌙</button>
+    </div>
+  </div>
+</header>
+
+<br><br><br>
+
+<main class="container article-page">
+  <h2 data-lang-hy="Անիմացիոն ֆիլմ" data-lang-en="Animation Film" data-lang-ru="Анимационный фильм">Անիմացիոն ֆիլմ</h2>
+
+  <p data-lang-hy="Անիմացիոն ֆիլմում շարժումը ստեղծվում է նկարների, մոդելների, համակարգչային գրաֆիկայի կամ այլ տեխնիկաների միջոցով։ Այստեղ հեղինակն ունի մեծ ազատություն՝ ստեղծելու այն, ինչը իրական նկարահանմամբ դժվար կամ անհնար է։"
+     data-lang-en="In an animated film, movement is created through drawings, models, computer graphics, or other techniques. The creator has great freedom to make what is difficult or impossible in live-action filming."
+     data-lang-ru="В анимационном фильме движение создаётся с помощью рисунков, моделей, компьютерной графики или других техник. Автор получает большую свободу создавать то, что трудно или невозможно снять в реальности.">
+    Անիմացիոն ֆիլմում շարժումը ստեղծվում է նկարների, մոդելների, համակարգչային գրաֆիկայի կամ այլ տեխնիկաների միջոցով։ Այստեղ հեղինակն ունի մեծ ազատություն՝ ստեղծելու այն, ինչը իրական նկարահանմամբ դժվար կամ անհնար է։
+  </p>
+
+  <p data-lang-hy="Անիմացիայում կարևոր են կերպարի ձևը, շարժման ռիթմը, գույնը, ձայնը և աշխարհը, որտեղ տեղի է ունենում պատմությունը։"
+     data-lang-en="In animation, the character’s form, rhythm of movement, color, sound, and the world where the story takes place are important."
+     data-lang-ru="В анимации важны форма персонажа, ритм движения, цвет, звук и мир, в котором происходит история.">
+    Անիմացիայում կարևոր են կերպարի ձևը, շարժման ռիթմը, գույնը, ձայնը և աշխարհը, որտեղ տեղի է ունենում պատմությունը։
+  </p>
+
+  <p data-lang-hy="Անիմացիոն ֆիլմը կարող է լինել մանկական, փիլիսոփայական, հումորային կամ դրամատիկ։ Կարևորը գաղափարի հստակությունն է և պատկերային մտածողությունը։"
+     data-lang-en="An animated film can be for children, philosophical, humorous, or dramatic. What matters most is a clear idea and visual thinking."
+     data-lang-ru="Анимационный фильм может быть детским, философским, юмористическим или драматическим. Главное — ясная идея и образное мышление.">
+    Անիմացիոն ֆիլմը կարող է լինել մանկական, փիլիսոփայական, հումորային կամ դրամատիկ։ Կարևորը գաղափարի հստակությունն է և պատկերային մտածողությունը։
+  </p>
+</main>
+
+<footer>
+  <p data-lang-hy="© 2026 CinemaPrep" data-lang-en="© 2026 CinemaPrep" data-lang-ru="© 2026 CinemaPrep">© 2026 CinemaPrep</p>
+</footer>
+
+<script>
+const langBtn = document.getElementById("langBtn");
+const themeBtn = document.getElementById("themeBtn");
+let currentLang = localStorage.getItem("lang") || "hy";
+function applyLanguage(lang) {
+  currentLang = lang;
+  localStorage.setItem("lang", lang);
+  document.documentElement.lang = lang;
+  document.body.dataset.lang = lang;
+  document.querySelectorAll(`[data-lang-${lang}]`).forEach(el => {
+    const value = el.getAttribute(`data-lang-${lang}`);
+    if (!value) return;
+    if (el.tagName === "TITLE") document.title = value;
+    else el.textContent = value;
+  });
+}
+function applyTheme() {
+  if (localStorage.getItem("theme") === "light") {
+    document.body.classList.add("light");
+    themeBtn.textContent = "☀️";
+  } else {
+    document.body.classList.remove("light");
+    themeBtn.textContent = "🌙";
+  }
+}
+langBtn.addEventListener("click", () => {
+  if (currentLang === "hy") applyLanguage("ru");
+  else if (currentLang === "ru") applyLanguage("en");
+  else applyLanguage("hy");
+});
+themeBtn.addEventListener("click", () => {
+  localStorage.setItem("theme", document.body.classList.contains("light") ? "dark" : "light");
+  applyTheme();
+});
+window.addEventListener("load", () => { applyLanguage(currentLang); applyTheme(); });
+</script>
+
+</body>
+</html>

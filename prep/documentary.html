@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8">
+  <title data-lang-hy="Վավերագրական ֆիլմ" data-lang-en="Documentary Film" data-lang-ru="Документальный фильм">Վավերագրական ֆիլմ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body data-lang="hy">
+
+<header>
+  <div class="header-inner">
+    <a href="../index.html#prep" class="back-btn"
+       data-lang-hy="← Վերադառնալ պատրաստման բաժին"
+       data-lang-en="← Back to preparation"
+       data-lang-ru="← Вернуться к подготовке">← Վերադառնալ պատրաստման բաժին</a>
+
+    <h1 data-lang-hy="🎬 Cinema Prep" data-lang-en="🎬 Cinema Prep" data-lang-ru="🎬 Cinema Prep">🎬 Cinema Prep</h1>
+
+    <div class="header-buttons">
+      <button id="langBtn" title="Լեզուներ">🌐</button>
+      <button id="themeBtn" title="Թեմա">🌙</button>
+    </div>
+  </div>
+</header>
+
+<br><br><br>
+
+<main class="container article-page">
+  <h2 data-lang-hy="Վավերագրական ֆիլմ" data-lang-en="Documentary Film" data-lang-ru="Документальный фильм">Վավերագրական ֆիլմ</h2>
+
+  <p data-lang-hy="Վավերագրական ֆիլմը հիմնվում է իրական մարդկանց, իրադարձությունների և փաստերի վրա։ Այն փորձում է ուսումնասիրել իրականությունը և բացահայտել դրա խորքային կողմերը։"
+     data-lang-en="A documentary film is based on real people, events, and facts. It explores reality and reveals its deeper sides."
+     data-lang-ru="Документальный фильм основан на реальных людях, событиях и фактах. Он исследует реальность и раскрывает её более глубокие стороны.">
+    Վավերագրական ֆիլմը հիմնվում է իրական մարդկանց, իրադարձությունների և փաստերի վրա։ Այն փորձում է ուսումնասիրել իրականությունը և բացահայտել դրա խորքային կողմերը։
+  </p>
+
+  <p data-lang-hy="Վավերագրական ֆիլմում կարևոր են դիտարկումը, հարցազրույցը, միջավայրը, արխիվային նյութերը և հեղինակի դիրքորոշումը։"
+     data-lang-en="In documentary film, observation, interviews, environment, archival materials, and the author’s position are important."
+     data-lang-ru="В документальном кино важны наблюдение, интервью, среда, архивные материалы и авторская позиция.">
+    Վավերագրական ֆիլմում կարևոր են դիտարկումը, հարցազրույցը, միջավայրը, արխիվային նյութերը և հեղինակի դիրքորոշումը։
+  </p>
+
+  <p data-lang-hy="Այն կարող է լինել տեղեկատվական, հետազոտական, պոետիկ կամ անձնական։ Ամեն դեպքում կարևոր է պահպանել ազնվությունը և հստակ հասկանալ՝ ինչ հարց է ֆիլմը բարձրացնում։"
+     data-lang-en="It may be informational, investigative, poetic, or personal. In every case, honesty is important, as well as a clear understanding of the question the film raises."
+     data-lang-ru="Он может быть информационным, исследовательским, поэтическим или личным. В любом случае важны честность и ясное понимание вопроса, который поднимает фильм.">
+    Այն կարող է լինել տեղեկատվական, հետազոտական, պոետիկ կամ անձնական։ Ամեն դեպքում կարևոր է պահպանել ազնվությունը և հստակ հասկանալ՝ ինչ հարց է ֆիլմը բարձրացնում։
+  </p>
+</main>
+
+<footer>
+  <p data-lang-hy="© 2026 CinemaPrep" data-lang-en="© 2026 CinemaPrep" data-lang-ru="© 2026 CinemaPrep">© 2026 CinemaPrep</p>
+</footer>
+
+<script>
+const langBtn = document.getElementById("langBtn");
+const themeBtn = document.getElementById("themeBtn");
+let currentLang = localStorage.getItem("lang") || "hy";
+function applyLanguage(lang) {
+  currentLang = lang;
+  localStorage.setItem("lang", lang);
+  document.documentElement.lang = lang;
+  document.body.dataset.lang = lang;
+  document.querySelectorAll(`[data-lang-${lang}]`).forEach(el => {
+    const value = el.getAttribute(`data-lang-${lang}`);
+    if (!value) return;
+    if (el.tagName === "TITLE") document.title = value;
+    else el.textContent = value;
+  });
+}
+function applyTheme() {
+  if (localStorage.getItem("theme") === "light") {
+    document.body.classList.add("light");
+    themeBtn.textContent = "☀️";
+  } else {
+    document.body.classList.remove("light");
+    themeBtn.textContent = "🌙";
+  }
+}
+langBtn.addEventListener("click", () => {
+  if (currentLang === "hy") applyLanguage("ru");
+  else if (currentLang === "ru") applyLanguage("en");
+  else applyLanguage("hy");
+});
+themeBtn.addEventListener("click", () => {
+  localStorage.setItem("theme", document.body.classList.contains("light") ? "dark" : "light");
+  applyTheme();
+});
+window.addEventListener("load", () => { applyLanguage(currentLang); applyTheme(); });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8">
+  <title data-lang-hy="Ինչ է մոնտաժը" data-lang-en="What is Editing?" data-lang-ru="Что такое монтаж">Ինչ է մոնտաժը</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body data-lang="hy">
+
+<header>
+  <div class="header-inner">
+
+    <a href="../index%20(1).html#materials"
+       class="back-btn"
+       data-lang-hy="← Վերադառնալ նյութերի ցուցակից"
+       data-lang-en="← Back to materials"
+       data-lang-ru="← Вернуться к материалам">
+       ← Վերադառնալ նյութերի ցուցակից
+    </a>
+
+    <h1 data-lang-hy="🎬 Cinema Prep"
+        data-lang-en="🎬 Cinema Prep"
+        data-lang-ru="🎬 Cinema Prep">
+        🎬 Cinema Prep
+    </h1>
+
+    <div class="header-buttons">
+      <button id="langBtn" title="Languages">🌐</button>
+      <button id="themeBtn" title="Theme">🌙</button>
+    </div>
+
+  </div>
+</header>
+
+<br><br><br>
+
+<main class="container article-page">
+
+  <h2 data-lang-hy="Ինչ է մոնտաժը"
+      data-lang-en="What is Editing?"
+      data-lang-ru="Что такое монтаж">
+      Ինչ է մոնտաժը
+  </h2>
+
+  <p data-lang-hy="Մոնտաժը ֆիլմի կադրերը ճիշտ հերթականությամբ դասավորելու և իրար կապելու գործընթացն է։ Դրա միջոցով առանձին կադրերը միավորվում են և վերածվում ամբողջական պատմության։"
+     data-lang-en="Editing is the process of arranging and connecting film shots in the correct order. Through editing, separate shots are combined into a complete story."
+     data-lang-ru="Монтаж — это процесс расположения и соединения кадров фильма в правильной последовательности. Благодаря монтажу отдельные кадры объединяются в целостную историю.">
+     Մոնտաժը ֆիլմի կադրերը ճիշտ հերթականությամբ դասավորելու և իրար կապելու գործընթացն է։
+     Դրա միջոցով առանձին կադրերը միավորվում են և վերածվում ամբողջական պատմության։
+  </p>
+
+  <p data-lang-hy="Մոնտաժը հանդիսանում է կինոյի կարևորագույն գործիքներից մեկը։ Այն որոշում է պատմության ռիթմը, տեսարանների հաջորդականությունը և հանդիսատեսի հուզական ընկալումը։"
+     data-lang-en="Editing is one of the most important tools of cinema. It determines the rhythm of the story, the sequence of scenes, and the audience's emotional perception."
+     data-lang-ru="Монтаж является одним из важнейших инструментов кино. Он определяет ритм повествования, последовательность сцен и эмоциональное восприятие зрителя.">
+     Մոնտաժը հանդիսանում է կինոյի կարևորագույն գործիքներից մեկը։
+     Այն որոշում է պատմության ռիթմը, տեսարանների հաջորդականությունը և հանդիսատեսի հուզական ընկալումը։
+  </p>
+
+  <p data-lang-hy="Մոնտաժի ընթացքում օգտագործվում են տարբեր անցումներ, կադրերի տևողություններ և ձայնային լուծումներ։ Լավ մոնտաժը օգնում է պատմությունը դարձնել հասկանալի, դինամիկ և ազդեցիկ։"
+     data-lang-en="During editing, various transitions, shot durations, and sound solutions are used. Good editing helps make a story clear, dynamic, and impactful."
+     data-lang-ru="Во время монтажа используются различные переходы, длительность кадров и звуковые решения. Хороший монтаж помогает сделать историю понятной, динамичной и выразительной.">
+     Մոնտաժի ընթացքում օգտագործվում են տարբեր անցումներ, կադրերի տևողություններ և ձայնային լուծումներ։
+     Լավ մոնտաժը օգնում է պատմությունը դարձնել հասկանալի, դինամիկ և ազդեցիկ։
+  </p>
+
+</main>
+
+<footer>
+  <p data-lang-hy="© 2026 CinemaPrep"
+     data-lang-en="© 2026 CinemaPrep"
+     data-lang-ru="© 2026 CinemaPrep">
+     © 2026 CinemaPrep
+  </p>
+</footer>
+
+<script>
+const langBtn = document.getElementById("langBtn");
+const themeBtn = document.getElementById("themeBtn");
+
+let currentLang = localStorage.getItem("lang") || "hy";
+
+function applyLanguage(lang) {
+  currentLang = lang;
+  localStorage.setItem("lang", lang);
+
+  document.documentElement.lang = lang;
+  document.body.dataset.lang = lang;
+
+  document.querySelectorAll(`[data-lang-${lang}]`).forEach(el => {
+    const value = el.getAttribute(`data-lang-${lang}`);
+    if (!value) return;
+
+    if (el.tagName === "TITLE") {
+      document.title = value;
+    } else {
+      el.textContent = value;
+    }
+  });
+}
+
+function applyTheme() {
+  if (localStorage.getItem("theme") === "light") {
+    document.body.classList.add("light");
+    themeBtn.textContent = "☀️";
+  } else {
+    document.body.classList.remove("light");
+    themeBtn.textContent = "🌙";
+  }
+}
+
+langBtn.addEventListener("click", () => {
+  if (currentLang === "hy") {
+    applyLanguage("ru");
+  } else if (currentLang === "ru") {
+    applyLanguage("en");
+  } else {
+    applyLanguage("hy");
+  }
+});
+
+themeBtn.addEventListener("click", () => {
+  if (document.body.classList.contains("light")) {
+    localStorage.setItem("theme", "dark");
+  } else {
+    localStorage.setItem("theme", "light");
+  }
+
+  applyTheme();
+});
+
+window.addEventListener("load", () => {
+  applyLanguage(currentLang);
+  applyTheme();
+});
+</script>
+
+</body>
+</html>

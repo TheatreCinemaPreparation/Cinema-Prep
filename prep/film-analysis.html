@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8">
+  <title data-lang-hy="Ֆիլմի վերլուծություն" data-lang-en="Film Analysis" data-lang-ru="Анализ фильма">Ֆիլմի վերլուծություն</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body data-lang="hy">
+
+<header>
+  <div class="header-inner">
+    <a href="../index.html#prep" class="back-btn"
+       data-lang-hy="← Վերադառնալ պատրաստման բաժին"
+       data-lang-en="← Back to preparation"
+       data-lang-ru="← Вернуться к подготовке">← Վերադառնալ պատրաստման բաժին</a>
+
+    <h1 data-lang-hy="🎬 Cinema Prep" data-lang-en="🎬 Cinema Prep" data-lang-ru="🎬 Cinema Prep">🎬 Cinema Prep</h1>
+
+    <div class="header-buttons">
+      <button id="langBtn" title="Լեզուներ">🌐</button>
+      <button id="themeBtn" title="Թեմա">🌙</button>
+    </div>
+  </div>
+</header>
+
+<br><br><br>
+
+<main class="container article-page">
+  <h2 data-lang-hy="Ֆիլմի վերլուծություն" data-lang-en="Film Analysis" data-lang-ru="Анализ фильма">Ֆիլմի վերլուծություն</h2>
+
+  <p data-lang-hy="Ֆիլմի վերլուծությունը ֆիլմը գիտակցված դիտելու և հասկանալու գործընթաց է։ Դրա նպատակն է տեսնել ոչ միայն պատմությունը, այլ նաև ռեժիսորական լուծումները։"
+     data-lang-en="Film analysis is the process of watching and understanding a film consciously. Its goal is to see not only the story, but also the directorial choices."
+     data-lang-ru="Анализ фильма — это процесс осознанного просмотра и понимания фильма. Его цель — увидеть не только сюжет, но и режиссёрские решения.">
+    Ֆիլմի վերլուծությունը ֆիլմը գիտակցված դիտելու և հասկանալու գործընթաց է։ Դրա նպատակն է տեսնել ոչ միայն պատմությունը, այլ նաև ռեժիսորական լուծումները։
+  </p>
+
+  <p data-lang-hy="Վերլուծելիս ուշադրություն ենք դարձնում թեմային, կերպարներին, կադրերին, լույսին, գույնին, ձայնին, մոնտաժին և ֆիլմի ռիթմին։"
+     data-lang-en="During analysis, we pay attention to the theme, characters, shots, lighting, color, sound, editing, and rhythm of the film."
+     data-lang-ru="При анализе обращают внимание на тему, персонажей, кадры, свет, цвет, звук, монтаж и ритм фильма.">
+    Վերլուծելիս ուշադրություն ենք դարձնում թեմային, կերպարներին, կադրերին, լույսին, գույնին, ձայնին, մոնտաժին և ֆիլմի ռիթմին։
+  </p>
+
+  <p data-lang-hy="Լավ վերլուծությունը պարզապես կարծիք չէ։ Այն պետք է հիմնավորված լինի կոնկրետ տեսարաններով, կադրերով և ֆիլմի կառուցվածքով։"
+     data-lang-en="Good analysis is not just an opinion. It should be supported by specific scenes, shots, and the structure of the film."
+     data-lang-ru="Хороший анализ — это не просто мнение. Он должен опираться на конкретные сцены, кадры и структуру фильма.">
+    Լավ վերլուծությունը պարզապես կարծիք չէ։ Այն պետք է հիմնավորված լինի կոնկրետ տեսարաններով, կադրերով և ֆիլմի կառուցվածքով։
+  </p>
+</main>
+
+<footer>
+  <p data-lang-hy="© 2026 CinemaPrep" data-lang-en="© 2026 CinemaPrep" data-lang-ru="© 2026 CinemaPrep">© 2026 CinemaPrep</p>
+</footer>
+
+<script>
+const langBtn = document.getElementById("langBtn");
+const themeBtn = document.getElementById("themeBtn");
+let currentLang = localStorage.getItem("lang") || "hy";
+function applyLanguage(lang) {
+  currentLang = lang;
+  localStorage.setItem("lang", lang);
+  document.documentElement.lang = lang;
+  document.body.dataset.lang = lang;
+  document.querySelectorAll(`[data-lang-${lang}]`).forEach(el => {
+    const value = el.getAttribute(`data-lang-${lang}`);
+    if (!value) return;
+    if (el.tagName === "TITLE") document.title = value;
+    else el.textContent = value;
+  });
+}
+function applyTheme() {
+  if (localStorage.getItem("theme") === "light") {
+    document.body.classList.add("light");
+    themeBtn.textContent = "☀️";
+  } else {
+    document.body.classList.remove("light");
+    themeBtn.textContent = "🌙";
+  }
+}
+langBtn.addEventListener("click", () => {
+  if (currentLang === "hy") applyLanguage("ru");
+  else if (currentLang === "ru") applyLanguage("en");
+  else applyLanguage("hy");
+});
+themeBtn.addEventListener("click", () => {
+  localStorage.setItem("theme", document.body.classList.contains("light") ? "dark" : "light");
+  applyTheme();
+});
+window.addEventListener("load", () => { applyLanguage(currentLang); applyTheme(); });
+</script>
+
+</body>
+</html>

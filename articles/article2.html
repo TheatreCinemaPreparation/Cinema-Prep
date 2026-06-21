@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8">
+  <title data-lang-hy="Ինչ է կադրի կոմպոզիցիան" data-lang-en="What is Frame Composition?" data-lang-ru="Что такое композиция кадра">Ինչ է կադրի կոմպոզիցիան</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body data-lang="hy">
+
+<header>
+  <div class="header-inner">
+    <h1 data-lang-hy="🎬 Cinema Prep" data-lang-en="🎬 Cinema Prep" data-lang-ru="🎬 Cinema Prep">🎬 Cinema Prep</h1>
+
+    <div class="header-buttons">
+      <button id="langBtn" title="Լեզուներ">🌐</button>
+      <button id="themeBtn" title="Թեմա">🌙</button>
+    </div>
+
+    <a href="../index%20(1).html#materials" class="back-btn"
+       data-lang-hy="← Վերադառնալ նյութերի ցուցակից"
+       data-lang-en="← Back to materials"
+       data-lang-ru="← Вернуться к материалам">← Վերադառնալ նյութերի ցուցակից</a>
+  </div>
+</header>
+
+<br><br><br>
+
+<main class="container article-page">
+  <h2 data-lang-hy="Ինչ է կադրի կոմպոզիցիան"
+      data-lang-en="What is Frame Composition?"
+      data-lang-ru="Что такое композиция кадра">Ինչ է կադրի կոմպոզիցիան</h2>
+
+  <p data-lang-hy="Կադրի կոմպոզիցիան պատկերում առարկաների, մարդկանց, լույսի, գույների և տարածության ճիշտ դասավորությունն է։ Այն օգնում է հանդիսատեսի ուշադրությունը կենտրոնացնել կարևորի վրա։"
+     data-lang-en="Frame composition is the proper arrangement of objects, people, light, colors, and space within an image. It helps focus the viewer’s attention on what is important."
+     data-lang-ru="Композиция кадра — это правильное расположение предметов, людей, света, цветов и пространства в изображении. Она помогает сосредоточить внимание зрителя на главном.">
+    Կադրի կոմպոզիցիան պատկերում առարկաների, մարդկանց, լույսի, գույների և տարածության ճիշտ դասավորությունն է։
+    Այն օգնում է հանդիսատեսի ուշադրությունը կենտրոնացնել կարևորի վրա։
+  </p>
+
+  <p data-lang-hy="Լավ կոմպոզիցիան կադրին տալիս է հստակություն, հավասարակշռություն և արտահայտչականություն։ Դրա միջոցով կարելի է փոխանցել կերպարի վիճակը, հարաբերությունները և տեսարանի տրամադրությունը։"
+     data-lang-en="Good composition gives the frame clarity, balance, and expressiveness. Through it, one can convey a character’s state, relationships, and the mood of the scene."
+     data-lang-ru="Хорошая композиция придаёт кадру ясность, равновесие и выразительность. С её помощью можно передать состояние персонажа, отношения и настроение сцены.">
+    Լավ կոմպոզիցիան կադրին տալիս է հստակություն, հավասարակշռություն և արտահայտչականություն։
+    Դրա միջոցով կարելի է փոխանցել կերպարի վիճակը, հարաբերությունները և տեսարանի տրամադրությունը։
+  </p>
+
+  <p data-lang-hy="Կոմպոզիցիայի մեջ կարևոր են կադրի կենտրոնը, առարկաների դիրքը, խորությունը, շարժման ուղղությունը և դատարկ տարածության օգտագործումը։ Սխալ կոմպոզիցիան կարող է շեղել դիտողի ուշադրությունը։"
+     data-lang-en="In composition, the center of the frame, the position of objects, depth, direction of movement, and the use of empty space are important. Poor composition can distract the viewer’s attention."
+     data-lang-ru="В композиции важны центр кадра, расположение объектов, глубина, направление движения и использование пустого пространства. Неправильная композиция может отвлечь внимание зрителя.">
+    Կոմպոզիցիայի մեջ կարևոր են կադրի կենտրոնը, առարկաների դիրքը, խորությունը, շարժման ուղղությունը և դատարկ տարածության օգտագործումը։
+    Սխալ կոմպոզիցիան կարող է շեղել դիտողի ուշադրությունը։
+  </p>
+</main>
+
+<footer>
+  <p data-lang-hy="© 2026 CinemaPrep" data-lang-en="© 2026 CinemaPrep" data-lang-ru="© 2026 CinemaPrep">© 2026 CinemaPrep</p>
+</footer>
+
+<script>
+  const langBtn = document.getElementById("langBtn");
+  const themeBtn = document.getElementById("themeBtn");
+
+  let currentLang = localStorage.getItem("lang") || "hy";
+
+  function applyLanguage(lang) {
+    currentLang = lang;
+    localStorage.setItem("lang", lang);
+    document.documentElement.lang = lang;
+    document.body.dataset.lang = lang;
+
+    document.querySelectorAll(`[data-lang-${lang}]`).forEach(el => {
+      const value = el.getAttribute(`data-lang-${lang}`);
+      if (!value) return;
+
+      if (el.tagName === "TITLE") {
+        document.title = value;
+      } else {
+        el.textContent = value;
+      }
+    });
+  }
+
+  function applyTheme() {
+    if (localStorage.getItem("theme") === "light") {
+      document.body.classList.add("light");
+      themeBtn.textContent = "☀️";
+    } else {
+      document.body.classList.remove("light");
+      themeBtn.textContent = "🌙";
+    }
+  }
+
+  langBtn.addEventListener("click", () => {
+    if (currentLang === "hy") applyLanguage("ru");
+    else if (currentLang === "ru") applyLanguage("en");
+    else applyLanguage("hy");
+  });
+
+  themeBtn.addEventListener("click", () => {
+    if (document.body.classList.contains("light")) {
+      localStorage.setItem("theme", "dark");
+    } else {
+      localStorage.setItem("theme", "light");
+    }
+    applyTheme();
+  });
+
+  window.addEventListener("load", () => {
+    applyLanguage(currentLang);
+    applyTheme();
+  });
+</script>
+
+</body>
+</html>
