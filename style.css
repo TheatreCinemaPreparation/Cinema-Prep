@@ -1002,3 +1002,22 @@ body.light .make-user-btn {
 body {
   margin: 0;
 }
+
+@media (max-width: 768px) {
+
+  .hero,
+  .hero-content {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .hero img,
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  * {
+    max-width: 100vw;
+  }
+}
